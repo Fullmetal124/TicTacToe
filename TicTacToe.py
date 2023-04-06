@@ -1,5 +1,5 @@
 element = None
-
+Xturn = True
 #board
 a1B = "_"
 a2B = "_"
@@ -32,7 +32,7 @@ def printboard():
         print(" ".join(row))
 
 def tictaccombatX():
-    global A1,A2,A3,B1,B2,B3,C1,C2,C3,a1B,a2B,a3B,b1B,b2B,b3B,c1B,c2B,c3B,listx,listo,listpossible,board
+    global A1,A2,A3,B1,B2,B3,C1,C2,C3,a1B,a2B,a3B,b1B,b2B,b3B,c1B,c2B,c3B,listx,listo,listpossible,board,Xturn
     printboard()
     Plr = input("X select a space:")
     if Plr.upper() ==  "A1":
@@ -48,8 +48,8 @@ def tictaccombatX():
             index = listpossible.index(element)
             listx = listx[:index] + [element] + listx[index:]
             listpossible.remove(element)
-            
-            tictaccombatO()
+            Xturn = not Xturn
+            winningestcheck()
     if Plr.upper() ==  "A2":
         if A2 in listx:
             print("That space is already taken STUPID")
@@ -63,7 +63,8 @@ def tictaccombatX():
             index = listpossible.index(element)
             listx = listx[:index] + [element] + listx[index:]
             listpossible.remove(element)
-            tictaccombatO()
+            Xturn = not Xturn
+            winningestcheck()
     if Plr.upper() ==  "A3":
         if A3 in listx:
             print("That space is already taken STUPID")
@@ -77,7 +78,8 @@ def tictaccombatX():
             index = listpossible.index(element)
             listx = listx[:index] + [element] + listx[index:]
             listpossible.remove(element)
-            tictaccombatO()
+            Xturn = not Xturn
+            winningestcheck()
     if Plr.upper() ==  "B1":
         if B1 in listx:
             print("That space is already taken STUPID")
@@ -91,7 +93,8 @@ def tictaccombatX():
             index = listpossible.index(element)
             listx = listx[:index] + [element] + listx[index:]
             listpossible.remove(element)
-            tictaccombatO()
+            Xturn = not Xturn
+            winningestcheck()
     if Plr.upper() ==  "B2":
         if B2 in listx:
             print("That space is already taken STUPID")
@@ -105,7 +108,8 @@ def tictaccombatX():
             index = listpossible.index(element)
             listx = listx[:index] + [element] + listx[index:]
             listpossible.remove(element)
-            tictaccombatO()
+            Xturn = not Xturn
+            winningestcheck()
     if Plr.upper() ==  "B3":
         if B3 in listx:
             print("That space is already taken STUPID")
@@ -119,7 +123,8 @@ def tictaccombatX():
             index = listpossible.index(element)
             listx = listx[:index] + [element] + listx[index:]
             listpossible.remove(element)
-            tictaccombatO()
+            Xturn = not Xturn
+            winningestcheck()
     if Plr.upper() ==  "C1":
         if C1 in listx:
             print("That space is already taken STUPID")
@@ -133,7 +138,8 @@ def tictaccombatX():
             index = listpossible.index(element)
             listx = listx[:index] + [element] + listx[index:]
             listpossible.remove(element)
-            tictaccombatO()
+            Xturn = not Xturn
+            winningestcheck()
     if Plr.upper() ==  "C2":
         if C2 in listx:
             print("That space is already taken STUPID")
@@ -147,16 +153,14 @@ def tictaccombatX():
             index = listpossible.index(element)
             listx = listx[:index] + [element] + listx[index:]
             listpossible.remove(element)
-            tictaccombatO()
+            Xturn = not Xturn
+            winningestcheck()
     if Plr.upper() ==  "C3":
         if C3 in listx:
             print("That space is already taken STUPID")
             tictaccombatX()
         elif C3 in listo:
             print("That space is already taken STUPID")
-            print("listP", listpossible)
-            print("listO", listo)
-            print("listX", listx)
             tictaccombatX()
         else:    
             c3B= "X"
@@ -164,13 +168,14 @@ def tictaccombatX():
             index = listpossible.index(element)
             listx = listx[:index] + [element] + listx[index:]
             listpossible.remove(element)
-            tictaccombatO()
+            Xturn = not Xturn
+            winningestcheck()
     else:
         print("could you input a real spot please :)                      stupid....")
         tictaccombatX()
 
 def tictaccombatO():
-    global A1,A2,A3,B1,B2,B3,C1,C2,C3,a1B,a2B,a3B,b1B,b2B,b3B,c1B,c2B,c3B,listx,listo,listpossible,board
+    global A1,A2,A3,B1,B2,B3,C1,C2,C3,a1B,a2B,a3B,b1B,b2B,b3B,c1B,c2B,c3B,listx,listo,listpossible,board,Xturn
     printboard()
     Plr = input("O select a space:")
     if Plr.upper() ==  "A1":
@@ -186,10 +191,8 @@ def tictaccombatO():
             index = listpossible.index(element)
             listo = listo[:index] + [element] + listo[index:]
             listpossible.remove(element)
-            print("listP", listpossible)
-            print("listO", listo)
-            print("listX", listx)
-            tictaccombatX()
+            Xturn = not Xturn
+            winningestcheck()
     if Plr.upper() ==  "A2":
         if A2 in listo:
             print("That space is already taken STUPID")
@@ -203,7 +206,8 @@ def tictaccombatO():
             index = listpossible.index(element)
             listo = listo[:index] + [element] + listo[index:]
             listpossible.remove(element)
-            tictaccombatX()
+            Xturn = not Xturn
+            winningestcheck()
     if Plr.upper() ==  "A3":
         if A3 in listo:
             print("That space is already taken STUPID")
@@ -217,7 +221,8 @@ def tictaccombatO():
             index = listpossible.index(element)
             listo = listo[:index] + [element] + listo[index:]
             listpossible.remove(element)
-            tictaccombatX()
+            Xturn = not Xturn
+            winningestcheck()
     if Plr.upper() ==  "B1":
         if B1 in listo:
             print("That space is already taken STUPID")
@@ -231,7 +236,8 @@ def tictaccombatO():
             index = listpossible.index(element)
             listo = listo[:index] + [element] + listo[index:]
             listpossible.remove(element)
-            tictaccombatX()
+            Xturn = not Xturn
+            winningestcheck()
     if Plr.upper() ==  "B2":
         if B2 in listo:
             print("That space is already taken STUPID")
@@ -245,7 +251,8 @@ def tictaccombatO():
             index = listpossible.index(element)
             listo = listo[:index] + [element] + listo[index:]
             listpossible.remove(element)
-            tictaccombatX()
+            Xturn = not Xturn
+            winningestcheck()
     if Plr.upper() ==  "B3":
         if B3 in listo:
             print("That space is already taken STUPID")
@@ -259,7 +266,8 @@ def tictaccombatO():
             index = listpossible.index(element)
             listo = listo[:index] + [element] + listo[index:]
             listpossible.remove(element)
-            tictaccombatX()
+            Xturn = not Xturn
+            winningestcheck()
     if Plr.upper() ==  "C1":
         if C1 in listo:
             print("That space is already taken STUPID")
@@ -273,7 +281,8 @@ def tictaccombatO():
             index = listpossible.index(element)
             listo = listo[:index] + [element] + listo[index:]
             listpossible.remove(element)
-            tictaccombatX()
+            Xturn = not Xturn
+            winningestcheck()
     if Plr.upper() ==  "C2":
         if C2 in listo:
             print("That space is already taken STUPID")
@@ -287,7 +296,8 @@ def tictaccombatO():
             index = listpossible.index(element)
             listo = listo[:index] + [element] + listo[index:]
             listpossible.remove(element)
-            tictaccombatX()
+            Xturn = not Xturn
+            winningestcheck()
     if Plr.upper() ==  "C3":
         if C3 in listo:
             print("That space is already taken STUPID")
@@ -301,13 +311,39 @@ def tictaccombatO():
             index = listpossible.index(element)
             listo = listo[:index] + [element] + listo[index:]
             listpossible.remove(element)
-            tictaccombatX()
+            Xturn = not Xturn
+            winningestcheck()
     else:
         print("could you input a real spot please :)                      stupid....")
         tictaccombatO()
 
-tictaccombatO()
+def wincheck(tocheck):
+    global a1B,a2B,a3B,b1B,b2B,b3B,c1B,c2B,c3B,listx,listo,listpossible
+    if a1B == tocheck and a2B == tocheck and a3B == tocheck:
+        return True
+        
+    elif B1 == tocheck and B2 == tocheck and B3 == tocheck:
+        return True
+
+        
 
 
+def turncheck():
+    if Xturn == True:
+        tictaccombatX()
+    elif Xturn == False:
+        tictaccombatO()
+        
+    
 
+    #See if X is winner:
+def winningestcheck():    
+    if (wincheck("X")) == True:
+        print ("X is the winner")
+    if (wincheck("O")) == True:
+        print("O is the winner")
+    else:
+        turncheck()
+
+tictaccombatX()
 
