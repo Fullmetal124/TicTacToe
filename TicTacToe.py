@@ -322,8 +322,27 @@ def wincheck(tocheck):
     if a1B == tocheck and a2B == tocheck and a3B == tocheck:
         return True
         
-    elif B1 == tocheck and B2 == tocheck and B3 == tocheck:
+    elif b1B == tocheck and b2B == tocheck and b3B == tocheck:
         return True
+    
+    elif c1B == tocheck and c2B == tocheck and c3B == tocheck:
+        return True
+    
+    elif a1B == tocheck and b1B == tocheck and c1B == tocheck:
+        return True
+    
+    elif a2B == tocheck and b2B == tocheck and c2B == tocheck:
+        return True
+    
+    elif a3B == tocheck and b3B == tocheck and c3B == tocheck:
+        return True
+    
+    elif a1B == tocheck and b2B == tocheck and c3B == tocheck:
+        return True
+    
+    elif a3B == tocheck and b2B == tocheck and c1B == tocheck:
+        return True
+        
 
         
 
@@ -335,6 +354,7 @@ def turncheck():
         tictaccombatO()
         
     
+tictaccombatX()
 
     #See if X is winner:
 def winningestcheck():    
@@ -344,6 +364,10 @@ def winningestcheck():
         print("O is the winner")
     else:
         turncheck()
-
-tictaccombatX()
-
+        
+def plyagnchk():
+    var3=input("Do you want to play again, quit to menu,? Y for yes, N for no, H for highscore")
+    if var3.lower() == 'y':
+        multiplayer()
+    if var3.lower() == "n":
+        rockmenu()
